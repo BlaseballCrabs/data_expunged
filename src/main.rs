@@ -5,6 +5,7 @@ use data_expunged::{
     db::Database,
     logger,
     oauth_listener::{self, OAuth},
+    watch,
 };
 use log::*;
 
@@ -32,7 +33,7 @@ async fn main() -> Result<()> {
     )
     .await?;
 
-    let bot = task::spawn(async { todo!() });
+    let bot = task::spawn(watch(&db));
     let listener = task::spawn(oauth_listener::listen(
         &db,
         OAuth {

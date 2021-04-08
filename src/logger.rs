@@ -17,7 +17,7 @@ pub fn init() -> Result<()> {
                 Level::Trace => Priority::Debug,
             };
             let mut fields = HashMap::new();
-            fields.insert("SYSLOG_IDENTIFIER", "idol_bot".to_string());
+            fields.insert("SYSLOG_IDENTIFIER", "data_expunged".to_string());
             if let Some(file) = record.file().or_else(|| record.module_path()) {
                 fields.insert("CODE_FILE", file.to_string());
             }
@@ -33,9 +33,7 @@ pub fn init() -> Result<()> {
     });
     fern::Dispatch::new()
         .level(log::LevelFilter::Warn)
-        .level_for("idol_bot", log::LevelFilter::Trace)
-        .level_for("idol_predictor", log::LevelFilter::Trace)
-        .level_for("idol_api", log::LevelFilter::Trace)
+        .level_for("data_expunged", log::LevelFilter::Trace)
         .level_for("tide", log::LevelFilter::Info)
         .chain(
             fern::Dispatch::new()
