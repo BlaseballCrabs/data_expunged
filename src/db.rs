@@ -59,4 +59,17 @@ impl Database {
             .await?;
         Ok(())
     }
+
+    pub fn player_uuids(&self) -> impl Stream<Item = Result<String>> + '_ {
+        sqlx::query_scalar!("SELECT uuid FROM players")
+            .fetch(&self.pool)
+            .err_into()
+    }
+
+    pub async fn add_player(&self, id: &str) -> Result<()> {
+        sqlx::query!("INSERT INTO players (uuid) VALUES (?)", id)
+            .execute(&self.pool)
+            .await?;
+        Ok(())
+    }
 }

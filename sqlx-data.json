@@ -28,6 +28,16 @@
       ]
     }
   },
+  "59a508416656b1eab002e877c87d560b5239ebbcd8ffc5e8c21d25e494bef204": {
+    "query": "INSERT INTO players (uuid) VALUES (?)",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Right": 1
+      },
+      "nullable": []
+    }
+  },
   "66b10dfe61b927080dd7a769f258d69cf6e5d2d0b2b49029f73b109869d8fb94": {
     "query": "SELECT id, url FROM webhooks",
     "describe": {
@@ -60,6 +70,24 @@
         "Right": 1
       },
       "nullable": []
+    }
+  },
+  "e115c48b9cd2c54cfc77239624ef89441cd2f436d52fc43f8d66eb4ca5526e63": {
+    "query": "SELECT uuid FROM players",
+    "describe": {
+      "columns": [
+        {
+          "name": "uuid",
+          "ordinal": 0,
+          "type_info": "Text"
+        }
+      ],
+      "parameters": {
+        "Right": 0
+      },
+      "nullable": [
+        false
+      ]
     }
   }
 }
