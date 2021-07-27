@@ -35,7 +35,8 @@ async fn send_message(db: &Database, url: &str, content: &str) -> Result<()> {
         .context("missing remaining requests")?
         .last()
         .as_str()
-        .parse()?;
+        .parse()
+        .unwrap_or(1);
 
     debug!("{} requests left", remaining);
 
