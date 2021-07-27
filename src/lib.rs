@@ -32,7 +32,7 @@ async fn send_message(db: &Database, url: &str, content: &str) -> Result<()> {
         .map_err(|x| x.into_inner())?;
 
     let remaining: usize = resp.header("X-RateLimit-Remaining")
-        .context("missing remaining requests")?
+        .unwrap_or(1)
         .last()
         .as_str()
         .parse()
